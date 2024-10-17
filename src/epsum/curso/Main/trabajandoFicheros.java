@@ -1,6 +1,5 @@
-package Main;
+package epsum.curso.Main;
 
-import javax.imageio.IIOException;
 import java.io.*;
 
 public class trabajandoFicheros {
