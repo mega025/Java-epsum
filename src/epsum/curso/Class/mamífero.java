@@ -35,4 +35,14 @@ public class mamífero extends Animal {
         }
         return "Los datos del mamífero son: " + super.toString() +  " tiene pelo  " + Tienepelo + " }";
     }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public String getTipo() {
+        return "";
+    }
 }

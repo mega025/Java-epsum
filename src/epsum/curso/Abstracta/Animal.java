@@ -1,8 +1,10 @@
 package epsum.curso.Abstracta;
 
+import epsum.curso.Interface.Gestionable;
+
 import java.io.Serializable;
 
-public abstract class Animal implements Serializable {
+public abstract class Animal implements Serializable, Gestionable {
 
     protected String nombre;
     protected int edad;

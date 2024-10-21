@@ -33,4 +33,14 @@ public class Ave extends Animal {
         }
         return "Los datos del ave son: " + super.toString() + " puede volar " + Puedevolar + " }";
     }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public String getTipo() {
+        return "";
+    }
 }
