@@ -10,6 +10,7 @@ public class ObjetoMain {
 
         Persona persona = new Persona("Juan", 27);
 
+
         try (FileOutputStream fos = new FileOutputStream("C:\\Users\\ALUMNO\\IdeaProjects\\Java\\java-xinjie\\src\\txt\\persona.ser");
              ObjectOutputStream salida = new ObjectOutputStream(fos)) {
 
