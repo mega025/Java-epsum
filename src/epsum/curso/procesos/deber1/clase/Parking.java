@@ -7,12 +7,25 @@ public class Parking {
     private final int CAPACIDAD = 5;
 
     public void CochesDentro(int coches) throws InterruptedException {
-        Synchronized(this){
-            while (list.size() < CAPACIDAD) {
+        synchronized (this) {
+            while (list.size() == CAPACIDAD) {
                 wait();
             }
             list.addLast(coches);
             System.out.println("Coches que estan dentro " + coches);
+            Thread.sleep(1000);
+            notify();
+        }
+    }
+
+    public void CochesSaliendo() throws InterruptedException {
+        synchronized (this) {
+            while (list.size() == 0) {
+                wait();
+            }
+            int coches = list.removeFirst();
+            System.out.println("Coches que han salido " + coches);
+            Thread.sleep(1000);
             notify();
         }
     }
