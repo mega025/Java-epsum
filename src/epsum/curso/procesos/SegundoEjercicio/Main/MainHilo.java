@@ -1,41 +1,41 @@
 package epsum.curso.procesos.SegundoEjercicio.Main;
 
-public class MainHilo {
-  public void hilopar() throws InterruptedException {
-      synchronized (this) {
-          while (true){
-              wait();
-              int par = 0;
-              System.out.println("hilo par : " + par);
-              Thread.sleep(1000);
-              par += 2 ;
-              notify();
-          }
-      }
-  }
-    public void hiloimpar() throws InterruptedException {
+class Contador{
+    private int par = 0;
+    private  int impar = 1;
+    public void hilopar() throws InterruptedException {
         synchronized (this) {
             while (true){
-                wait();
-                int impar = 1;
-                System.out.println("hilo par : " + impar);
+
+                System.out.println("hilo par : " + par);
                 Thread.sleep(1000);
-                impar += 2 ;
+                par += 2 ;
                 notify();
+                wait();
             }
         }
     }
+    public void hiloimpar() throws InterruptedException {
+        synchronized (this) {
+            while (true){
+
+                System.out.println("hilo impar : " + impar);
+                Thread.sleep(1000);
+                impar += 2 ;
+                notify();
+                wait();
+            }
+        }
+    }
+}
+public class MainHilo {
 
     public static void main(String[] args) {
+        Contador contador = new Contador();
 
       Thread hilopar = new Thread(() ->{
           try {
-              int par = 0;
-              while (true){
-                  System.out.println("hilo par : " + par);
-                  par += 2 ;
-                  Thread.sleep(1000);
-              }
+            contador.hilopar();
           } catch (InterruptedException e) {
               throw new RuntimeException(e);
           }
@@ -43,12 +43,7 @@ public class MainHilo {
 
         Thread hiloimpar = new Thread(() ->{
             try {
-                int impar = 1;
-                while (true){
-                    System.out.println("hilo impar : " + impar);
-                    impar += 2 ;
-                    Thread.sleep(1000);
-                }
+               contador.hiloimpar();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
